@@ -1,7 +1,21 @@
-﻿@page "/"
+﻿@inject AuthenticationService AuthService
+@page "/"
 
-<h1>Hello, world!</h1>
+<h1>Hello, @Name!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+@functions {
+    public string Name { get; set; }
+
+    override protected void OnInit()
+    {
+        base.OnInit();
+
+        Name = AuthService.IsLoggedIn()
+            ? AuthService.GetCachedUser().given_name
+            : "world";
+    }
+}

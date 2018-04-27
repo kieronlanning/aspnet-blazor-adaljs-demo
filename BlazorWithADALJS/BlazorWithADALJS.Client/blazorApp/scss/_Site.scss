@@ -98,6 +98,11 @@ app {
         height: 100vh;
         position: sticky;
         top: 0;
+        position: fixed;
+    }
+
+    .main {
+        margin-left: 250px;
     }
 
     .main .top-row {
